@@ -14,8 +14,8 @@ Welcome to **Legion of Spartans** – the ultimate fitness platform to unlock yo
 ---
 
 ## **Tech Stack** 🛠️ 
-- **Frontend: HTML, CSS, JavaScript
-- - **Backend: MySql
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: MySql
 
 ---
 
