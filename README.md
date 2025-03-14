@@ -8,7 +8,6 @@ Welcome to **Legion of Spartans** – the ultimate fitness platform to unlock yo
 - **Custom Workout Plans** based on your goals (weight gain, fat loss, body recomp, yoga, cardio).
 - **Body-Part Specific Exercises** with clickable images & videos for perfect form.
 - **Health Calculators**: Track your progress with BMI and Calorie calculators.
-- **Affordable Pricing** starting Tech Stack 🛠️at just **29 INR**.
 - **Joint-Friendly Alternatives** for safe, pain-free training.
 
 ---
