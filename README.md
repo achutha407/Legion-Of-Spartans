@@ -1,3 +1,5 @@
+![HyperKcal Screenshot](pictures/logox2.png)
+
 # **Legion of Spartans** 💪🔥
 
 Welcome to **Legion of Spartans** – the ultimate fitness platform to unlock your full potential. Whether you're looking to **bulk**, **cut**, **recomp**, or focus on **yoga** or **cardio**, we’ve got the **perfect plan** for you. Let us guide you towards achieving your dream body with personalized workout routines, expert advice, and interactive tools.
