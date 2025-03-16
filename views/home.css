@@ -23,23 +23,19 @@ body {
 section {
     padding: 20px;
 }
-button {
-    background-color: #b71c1c;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-}
-button:hover {
-    background-color: #ff3d00;
-}
 
 header {
-    background-color: none; 
+    background-color: rgba(0,0,0,0.3); /*makes the header opaque */ 
+    backdrop-filter: blur(10px);
     display: flex;
+    
     align-items: center; 
-    padding: 15px 20px; 
+    padding:  15px; 
+}
+
+.logo{  /*  to mess with logo */
+    width: 190px; 
+    height: 65px;
 }
 
 header img {
@@ -54,3 +50,54 @@ header h1 {
     font-weight: bold;
     color: white;
 }
+
+button {
+    --color: #720000;
+    font-family: inherit;
+    display: inline-block;
+    width: 8em;
+    height: 2.6em;
+    line-height: 2.5em;
+    margin: 20px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color 0.5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--color);
+  }
+  
+  button:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+  }
+  
+  button:hover {
+    color: #fff;
+  }
+  
+  button:before {
+    top: 100%;
+    left: 100%;
+    transition: all 0.7s;
+  }
+  
+  button:hover:before {
+    top: -30px;
+    left: -30px;
+  }
+  
+  button:active:before {
+    background: #800101;
+    transition: background 0s;
+  }
+  
