@@ -1,6 +1,6 @@
 ![HyperKcal Screenshot](pictures/logox2.png)
 
-![Screenshot 1]((pictures/logox2.png) | ![Screenshot 2]((pictures/favicomx.png) |
+![Screenshot 1](pictures/logox2.png) | ![Screenshot 2](pictures/favicomx.png) |
 
 
 # **Legion of Spartans** 💪🔥
