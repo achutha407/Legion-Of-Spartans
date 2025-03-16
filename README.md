@@ -1,4 +1,4 @@
-![HyperKcal Screenshot](pictures/logox2.png)
+![LOGO](pictures/logox2.png)
 
 # **Legion of Spartans** 💪🔥
 
