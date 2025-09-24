@@ -24,4 +24,3 @@ Welcome to **Legion of Spartans** – the ultimate fitness platform to unlock yo
  Join the Legion. Train Hard. Become Unstoppable. 🚀🏋️‍♂️
 
 
-
