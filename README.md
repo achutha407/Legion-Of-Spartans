@@ -13,7 +13,7 @@ Welcome to **Legion of Spartans** – the ultimate fitness platform to unlock yo
 - **Health Calculators**: Track your progress with BMI and Calorie calculators.
 - **Joint-Friendly Alternatives** for safe, pain-free training.
 
----
+--- 
 
 ## **Tech Stack** 🛠️ 
 - **Frontend**: HTML, CSS, JavaScript
