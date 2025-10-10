@@ -10,7 +10,7 @@ Welcome to **Legion of Spartans** – the ultimate fitness platform to unlock yo
 ## **Features** 🚀
 - **Custom Workout Plans** based on your goals (weight gain, fat loss, body recomp, yoga, cardio).
 - **Body-Part Specific Exercises** with clickable images & videos for perfect form.
-- **Health Calculators**: Track your progress with BMI and Calorie calculators.
+- **Health Calculators**: Track your progress with BMI and Calorie calculators. 
 - **Joint-Friendly Alternatives** for safe, pain-free training.
 
 --- 
