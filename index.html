@@ -6,6 +6,16 @@
     <title>Legion of Spartans 💪 - Forged in Discipline</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+        ::selection {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        ::-moz-selection {
+            background: var(--accent-primary);
+            color: white;
+        }
+
         :root {
             --bg-primary: #0a0a0a;
             --bg-secondary: #141414;
@@ -13,7 +23,7 @@
             --text-primary: #f5f5f5;
             --text-secondary: #a0a0a0;
             --accent-primary: #c41e3a;
-            --accent-secondary: #d4af37;
+            --accent-secondary: #8a8a8a;
             --accent-glow: rgba(196, 30, 58, 0.4);
             --border-color: #2a2a2a;
         }
@@ -25,6 +35,7 @@
             --text-primary: #1a1a1a;
             --text-secondary: #666666;
             --accent-primary: #b71c1c;
+            --accent-secondary: #8a8a8a;
             --border-color: #e0e0e0;
         }
 
@@ -222,10 +233,12 @@
         }
 
         .spartan-icon {
-            font-size: 6rem;
+            font-size: 8rem;
             margin-bottom: 1rem;
             animation: floatSpartan 3s ease-in-out infinite;
             filter: drop-shadow(0 0 20px var(--accent-glow));
+            font-weight: 900;
+            color: var(--accent-primary);
         }
 
         @keyframes floatSpartan {
@@ -271,7 +284,7 @@
         .hero-quote {
             font-size: 1.2rem;
             font-style: italic;
-            color: var(--accent-secondary);
+            color: var(--text-secondary);
             margin-bottom: 3rem;
             opacity: 0;
             animation: fadeIn 1s ease-out 0.5s forwards;
@@ -622,6 +635,8 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            text-decoration: none;
+            font-size: 1rem;
         }
 
         .video-btn:hover {
@@ -922,13 +937,8 @@
         }
 
         .recovery-card:hover {
-            border-color: var(--accent-secondary);
-            box-shadow: 0 12px 32px rgba(212, 175, 55, 0.2);
-        }
-
-        .recovery-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
+            border-color: var(--accent-primary);
+            box-shadow: 0 12px 32px rgba(196, 30, 58, 0.2);
         }
 
         .recovery-card h3 {
@@ -982,7 +992,7 @@
         .footer-tagline {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 2rem;
-            color: var(--accent-secondary);
+            color: var(--accent-primary);
             margin-bottom: 1rem;
             letter-spacing: 3px;
         }
@@ -1001,8 +1011,11 @@
 
         .social-links a {
             color: var(--text-secondary);
-            font-size: 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
             transition: all 0.3s;
+            letter-spacing: 0.5px;
         }
 
         .social-links a:hover {
@@ -1104,7 +1117,7 @@
 <body>
     <nav>
         <div class="logo-container">
-            <div class="logo">Legion of Spartans 💪</div>
+            <div class="logo">Legion of Spartans</div>
         </div>
         <div class="hamburger" id="hamburger">
             <span></span>
@@ -1116,7 +1129,6 @@
             <a href="#exercises">Exercises</a>
             <a href="#calculators">Tools</a>
             <a href="#recovery">Recovery</a>
-            <a href="#pricing">Pricing</a>
             <a href="#account">Account</a>
             <div class="theme-toggle" id="themeToggle"></div>
         </div>
@@ -1125,7 +1137,7 @@
     <section class="hero">
         <div class="hero-bg-image"></div>
         <div class="hero-content">
-            <div class="spartan-icon">⚔️</div>
+            <div class="spartan-icon">Λ</div>
             <h1>Legion of Spartans</h1>
             <p class="hero-tagline">Forged in Discipline, Built for Battle.</p>
             <p class="hero-quote" id="heroQuote"></p>
@@ -1277,7 +1289,7 @@
                             <span class="meta-tag">Beginner-Advanced</span>
                         </div>
                         <p>The king of chest exercises. Retract scapula, maintain arch, press in straight line. Control the eccentric, explosive concentric.</p>
-                        <button class="video-btn" onclick="alert('Video tutorial would open here')">▶ Watch Form Video</button>
+                        <a href="https://www.youtube.com/watch?v=rT7DgCr-3pg" target="_blank" rel="noopener" class="video-btn" style="text-decoration: none;">▶ Watch Form Video</a>
                     </div>
                 </div>
 
@@ -1291,7 +1303,7 @@
                             <span class="meta-tag">Intermediate</span>
                         </div>
                         <p>Target upper chest with 30-45 degree angle. Full ROM, controlled tempo, squeeze at top. Avoid overarching back.</p>
-                        <button class="video-btn" onclick="alert('Video tutorial would open here')">▶ Watch Form Video</button>
+                        <a href="https://www.youtube.com/watch?v=8iPEnn-ltC8" target="_blank" rel="noopener" class="video-btn" style="text-decoration: none;">▶ Watch Form Video</a>
                     </div>
                 </div>
 
@@ -1305,7 +1317,7 @@
                             <span class="meta-tag">All Levels</span>
                         </div>
                         <p>Constant tension throughout movement. Slight bend in elbows, focus on chest squeeze. Various angles target different areas.</p>
-                        <button class="video-btn" onclick="alert('Video tutorial would open here')">▶ Watch Form Video</button>
+                        <a href="https://www.youtube.com/watch?v=Iwe6AmxVf7o" target="_blank" rel="noopener" class="video-btn" style="text-decoration: none;">▶ Watch Form Video</a>
                     </div>
                 </div>
             </div>
@@ -1384,22 +1396,18 @@
         </div>
         <div class="recovery-grid">
             <div class="recovery-card">
-                <div class="recovery-icon">😴</div>
                 <h3>Sleep Optimization</h3>
                 <p>7-9 hours of quality sleep is non-negotiable. Dark room, cool temperature, consistent schedule. Your muscles rebuild while you rest.</p>
             </div>
             <div class="recovery-card">
-                <div class="recovery-icon">🥗</div>
                 <h3>Nutrition Timing</h3>
                 <p>Post-workout protein within 2 hours. Adequate carbs for glycogen replenishment. Hydration throughout the day, not just during training.</p>
             </div>
             <div class="recovery-card">
-                <div class="recovery-icon">🧘</div>
                 <h3>Active Recovery</h3>
                 <p>Light movement on rest days. Yoga, walking, swimming. Keep blood flowing without taxing your system. Mobility work prevents injury.</p>
             </div>
             <div class="recovery-card">
-                <div class="recovery-icon">💆</div>
                 <h3>Tissue Work</h3>
                 <p>Foam rolling, massage, stretching. Release tension, improve range of motion, accelerate recovery. Invest 15-20 minutes daily.</p>
             </div>
@@ -1429,59 +1437,6 @@
             </div>
             <div class="gallery-item">
                 <img src="https://images.unsplash.com/photo-1623874228601-f4193c7b1818?w=800&q=80" alt="Cardio Training">
-            </div>
-        </div>
-    </section>
-
-    <section id="pricing">
-        <div class="section-header">
-            <h2>Join The Legion</h2>
-            <p>Invest in yourself. Choose your membership and start your transformation today.</p>
-        </div>
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3>Warrior</h3>
-                <div class="price">$29</div>
-                <div class="price-period">/month</div>
-                <ul class="features-list">
-                    <li>Access to all training programs</li>
-                    <li>Exercise library with videos</li>
-                    <li>Nutrition calculators</li>
-                    <li>Community forum access</li>
-                    <li>Monthly progress tracking</li>
-                </ul>
-                <button class="cta-button">Start Training</button>
-            </div>
-
-            <div class="pricing-card featured">
-                <span class="pricing-badge">MOST POPULAR</span>
-                <h3>Spartan</h3>
-                <div class="price">$49</div>
-                <div class="price-period">/month</div>
-                <ul class="features-list">
-                    <li>Everything in Warrior</li>
-                    <li>Personalized workout plans</li>
-                    <li>Weekly coaching calls</li>
-                    <li>Advanced analytics</li>
-                    <li>Meal planning guidance</li>
-                    <li>Priority support</li>
-                </ul>
-                <button class="cta-button">Join Now</button>
-            </div>
-
-            <div class="pricing-card">
-                <h3>Legion Elite</h3>
-                <div class="price">$99</div>
-                <div class="price-period">/month</div>
-                <ul class="features-list">
-                    <li>Everything in Spartan</li>
-                    <li>1-on-1 coaching sessions</li>
-                    <li>Custom program design</li>
-                    <li>Supplement protocols</li>
-                    <li>24/7 coach messaging</li>
-                    <li>Exclusive masterclasses</li>
-                </ul>
-                <button class="cta-button">Go Elite</button>
             </div>
         </div>
     </section>
@@ -1543,23 +1498,23 @@
         <div class="sources-section">
             <div class="source-item">
                 <div class="source-title">Exercise Databases & Research</div>
-                <a href="#" class="source-link">National Strength and Conditioning Association (NSCA)</a>
+                <a href="https://www.nsca.com" target="_blank" rel="noopener" class="source-link">National Strength and Conditioning Association (NSCA)</a>
             </div>
             <div class="source-item">
                 <div class="source-title">Nutrition Science</div>
-                <a href="#" class="source-link">International Society of Sports Nutrition (ISSN)</a>
+                <a href="https://www.jissn.com" target="_blank" rel="noopener" class="source-link">International Society of Sports Nutrition (ISSN)</a>
             </div>
             <div class="source-item">
                 <div class="source-title">Biomechanics & Form</div>
-                <a href="#" class="source-link">American College of Sports Medicine (ACSM)</a>
+                <a href="https://www.acsm.org" target="_blank" rel="noopener" class="source-link">American College of Sports Medicine (ACSM)</a>
             </div>
             <div class="source-item">
                 <div class="source-title">Recovery Protocols</div>
-                <a href="#" class="source-link">Journal of Strength and Conditioning Research</a>
+                <a href="https://journals.lww.com/nsca-jscr" target="_blank" rel="noopener" class="source-link">Journal of Strength and Conditioning Research</a>
             </div>
             <div class="source-item">
                 <div class="source-title">Program Design</div>
-                <a href="#" class="source-link">Periodization: Theory and Methodology - Bompa & Haff</a>
+                <a href="https://www.springer.com" target="_blank" rel="noopener" class="source-link">Periodization: Theory and Methodology - Bompa & Haff</a>
             </div>
         </div>
     </section>
@@ -1570,10 +1525,10 @@
             <p>Built by warriors, for warriors. Join the legion and transform your life.</p>
         </div>
         <div class="social-links">
-            <a href="#">📱</a>
-            <a href="#">🐦</a>
-            <a href="#">📸</a>
-            <a href="#">💼</a>
+            <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
         </div>
         <p style="color: var(--text-secondary); font-size: 0.9rem;">&copy; 2026 Legion of Spartans. All rights reserved.</p>
     </footer>
@@ -1634,16 +1589,208 @@
 
         const exercises = {
             chest: [
-                { name: 'Barbell Bench Press', img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80', tags: ['Compound', 'Barbell', 'Beginner-Advanced'], desc: 'The king of chest exercises. Retract scapula, maintain arch, press in straight line.' },
-                { name: 'Incline Dumbbell Press', img: 'https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?w=600&q=80', tags: ['Compound', 'Dumbbells', 'Intermediate'], desc: 'Target upper chest with 30-45 degree angle. Full ROM, controlled tempo, squeeze at top.' },
-                { name: 'Cable Flyes', img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', tags: ['Isolation', 'Cable', 'All Levels'], desc: 'Constant tension throughout movement. Slight bend in elbows, focus on chest squeeze.' }
+                { name: 'Barbell Bench Press', img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80', tags: ['Compound', 'Barbell', 'Beginner-Advanced'], desc: 'The king of chest exercises. Retract scapula, maintain arch, press in straight line.', video: 'https://www.youtube.com/watch?v=rT7DgCr-3pg' },
+                { name: 'Incline Dumbbell Press', img: 'https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?w=600&q=80', tags: ['Compound', 'Dumbbells', 'Intermediate'], desc: 'Target upper chest with 30-45 degree angle. Full ROM, controlled tempo, squeeze at top.', video: 'https://www.youtube.com/watch?v=8iPEnn-ltC8' },
+                { name: 'Cable Flyes', img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', tags: ['Isolation', 'Cable', 'All Levels'], desc: 'Constant tension throughout movement. Slight bend in elbows, focus on chest squeeze.', video: 'https://www.youtube.com/watch?v=Iwe6AmxVf7o' }
             ],
             back: [
-                { name: 'Deadlifts', img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80', tags: ['Compound', 'Barbell', 'Advanced'], desc: 'King of all exercises. Neutral spine, hip hinge, drive through heels. Build total body strength.' },
-                { name: 'Pull-Ups', img: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600&q=80', tags: ['Compound', 'Bodyweight', 'Intermediate'], desc: 'Full range scapular movement. Dead hang to chin over bar. Control eccentric phase.' },
-                { name: 'Barbell Rows', img: 'https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?w=600&q=80', tags: ['Compound', 'Barbell', 'Intermediate'], desc: 'Hinge at hips, row to lower chest. Maintain neutral spine, squeeze shoulder blades together.' }
+                { name: 'Deadlifts', img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80', tags: ['Compound', 'Barbell', 'Advanced'], desc: 'King of all exercises. Neutral spine, hip hinge, drive through heels. Build total body strength.', video: 'https://www.youtube.com/watch?v=op9kVnSso6Q' },
+                { name: 'Pull-Ups', img: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600&q=80', tags: ['Compound', 'Bodyweight', 'Intermediate'], desc: 'Full range scapular movement. Dead hang to chin over bar. Control eccentric phase.', video: 'https://www.youtube.com/watch?v=eGo4IYlbE5g' },
+                { name: 'Barbell Rows', img: 'https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?w=600&q=80', tags: ['Compound', 'Barbell', 'Intermediate'], desc: 'Hinge at hips, row to lower chest. Maintain neutral spine, squeeze shoulder blades together.', video: 'https://www.youtube.com/watch?v=FWJR5Ve8bnQ' }
             ],
             shoulders: [
-                { name: 'Overhead Press', img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80', tags: ['Compound', 'Barbell', 'Intermediate'], desc: 'Press straight overhead, lock out arms. Engage core, avoid excessive back arch.' },
-                { name: 'Lateral Raises', img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', tags: ['Isolation', 'Dumbbells', 'All Levels'], desc: 'Build shoulder width. Slight forward lean, controlled movement, mind-muscle connection.' },
-                { name: 'Face Pulls', img: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80', tags: ['Isolation', 'Cable', 'All Levels
+                { name: 'Overhead Press', img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80', tags: ['Compound', 'Barbell', 'Intermediate'], desc: 'Press straight overhead, lock out arms. Engage core, avoid excessive back arch.', video: 'https://www.youtube.com/watch?v=2yjwXTZQDDI' },
+                { name: 'Lateral Raises', img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', tags: ['Isolation', 'Dumbbells', 'All Levels'], desc: 'Build shoulder width. Slight forward lean, controlled movement, mind-muscle connection.', video: 'https://www.youtube.com/watch?v=3VcKaXpzqRo' },
+                { name: 'Face Pulls', img: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80', tags: ['Isolation', 'Cable', 'All Levels'], desc: 'Essential for rear delts and rotator cuff health. Pull to face level, external rotation at end.', video: 'https://www.youtube.com/watch?v=rep-qVOkqgk' }
+            ],
+            arms: [
+                { name: 'Barbell Curls', img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80', tags: ['Isolation', 'Barbell', 'All Levels'], desc: 'Classic bicep builder. No body swing, controlled eccentric, full range of motion.', video: 'https://www.youtube.com/watch?v=kwG2ipFRgfo' },
+                { name: 'Close-Grip Bench', img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80', tags: ['Compound', 'Barbell', 'Intermediate'], desc: 'Best tricep mass builder. Hands shoulder-width, elbows tucked, press explosively.', video: 'https://www.youtube.com/watch?v=nEF0bv2FW94' },
+                { name: 'Hammer Curls', img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', tags: ['Isolation', 'Dumbbells', 'All Levels'], desc: 'Target brachialis and forearms. Neutral grip throughout, no rotation.', video: 'https://www.youtube.com/watch?v=TwD-YGVP4Bk' }
+            ],
+            legs: [
+                { name: 'Back Squats', img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80', tags: ['Compound', 'Barbell', 'Intermediate'], desc: 'King of leg exercises. Depth matters. Hip crease below knee, drive through heels.', video: 'https://www.youtube.com/watch?v=ultWZbUMPL8' },
+                { name: 'Romanian Deadlifts', img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80', tags: ['Compound', 'Barbell', 'Intermediate'], desc: 'Hamstring and glute development. Slight knee bend, hip hinge, feel the stretch.', video: 'https://www.youtube.com/watch?v=2SHsk9AzdjA' },
+                { name: 'Bulgarian Split Squats', img: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80', tags: ['Compound', 'Dumbbells', 'Advanced'], desc: 'Unilateral leg strength. Front foot flat, vertical torso, control the descent.', video: 'https://www.youtube.com/watch?v=2C-uNgKwPLE' }
+            ],
+            core: [
+                { name: 'Hanging Leg Raises', img: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600&q=80', tags: ['Isolation', 'Bodyweight', 'Intermediate'], desc: 'Superior ab exercise. Minimize swing, raise legs to 90 degrees, controlled lowering.', video: 'https://www.youtube.com/watch?v=hdng3Nm1x_E' },
+                { name: 'Ab Wheel Rollouts', img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80', tags: ['Compound', 'Equipment', 'Advanced'], desc: 'Total core strength. Maintain neutral spine, extend as far as possible, pull back with core.', video: 'https://www.youtube.com/watch?v=EXm-0PXSD3E' },
+                { name: 'Plank Variations', img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', tags: ['Isometric', 'Bodyweight', 'All Levels'], desc: 'Build anti-extension strength. Neutral spine, squeeze glutes, breathe normally.', video: 'https://www.youtube.com/watch?v=pSHjTRCQxIw' }
+            ]
+        };
+
+        const bodyPartBtns = document.querySelectorAll('.body-part-btn');
+        const exerciseGrid = document.getElementById('exerciseGrid');
+
+        bodyPartBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                bodyPartBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const part = btn.dataset.part;
+                renderExercises(part);
+            });
+        });
+
+        function renderExercises(part) {
+            const exerciseList = exercises[part];
+            exerciseGrid.innerHTML = exerciseList.map(ex => `
+                <div class="exercise-card">
+                    <img class="exercise-thumbnail" src="${ex.img}" alt="${ex.name}">
+                    <div class="exercise-info">
+                        <h4>${ex.name}</h4>
+                        <div class="exercise-meta">
+                            ${ex.tags.map(tag => `<span class="meta-tag">${tag}</span>`).join('')}
+                        </div>
+                        <p>${ex.desc}</p>
+                        <a href="${ex.video}" target="_blank" rel="noopener" class="video-btn" style="text-decoration: none;">▶ Watch Form Video</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('bmiWeight').value);
+            const height = parseFloat(document.getElementById('bmiHeight').value) / 100;
+            
+            if (!weight || !height) {
+                alert('Please enter valid values for weight and height');
+                return;
+            }
+
+            const bmi = (weight / (height * height)).toFixed(1);
+            let category = '';
+            let message = '';
+            
+            if (bmi < 18.5) {
+                category = 'Underweight';
+                message = 'Consider increasing caloric intake and strength training.';
+            } else if (bmi < 25) {
+                category = 'Normal Weight';
+                message = 'Maintain your current lifestyle with consistent training.';
+            } else if (bmi < 30) {
+                category = 'Overweight';
+                message = 'Focus on fat loss protocol and caloric deficit.';
+            } else {
+                category = 'Obese';
+                message = 'Consult with a healthcare professional and start gradual changes.';
+            }
+
+            document.getElementById('bmiResult').innerHTML = `
+                <div class="result-card">
+                    <h4>Your BMI</h4>
+                    <div class="result-value">${bmi}</div>
+                    <p style="margin-top: 0.5rem; color: white; opacity: 0.9;">${category}</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: white; opacity: 0.8;">${message}</p>
+                </div>
+            `;
+        }
+
+        function calculateCalories() {
+            const age = parseFloat(document.getElementById('age').value);
+            const gender = document.getElementById('gender').value;
+            const weight = parseFloat(document.getElementById('calWeight').value);
+            const height = parseFloat(document.getElementById('calHeight').value);
+            const activity = parseFloat(document.getElementById('activity').value);
+            const goal = document.getElementById('goal').value;
+
+            if (!age || !weight || !height) {
+                alert('Please fill all required fields');
+                return;
+            }
+
+            let bmr;
+            if (gender === 'male') {
+                bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+            } else {
+                bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+            }
+
+            const tdee = Math.round(bmr * activity);
+            let targetCalories = tdee;
+            let recommendation = '';
+
+            if (goal === 'cut') {
+                targetCalories = Math.round(tdee - 500);
+                recommendation = 'Fat Loss: 500 calorie deficit for 1lb/week loss';
+            } else if (goal === 'bulk') {
+                targetCalories = Math.round(tdee + 300);
+                recommendation = 'Muscle Gain: 300 calorie surplus for lean bulk';
+            } else {
+                recommendation = 'Maintenance: Maintain current physique';
+            }
+
+            const protein = Math.round(weight * 2.2);
+            const fat = Math.round(weight * 1);
+            const proteinCals = protein * 4;
+            const fatCals = fat * 9;
+            const carbs = Math.round((targetCalories - proteinCals - fatCals) / 4);
+
+            document.getElementById('calorieResult').innerHTML = `
+                <div class="result-card">
+                    <h4>Daily Target</h4>
+                    <div class="result-value">${targetCalories} cal</div>
+                    <p style="margin-top: 1rem; color: white; opacity: 0.9; font-size: 0.95rem;">${recommendation}</p>
+                    <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2);">
+                        <p style="color: white; opacity: 0.9; margin-bottom: 0.5rem;"><strong>Macros:</strong></p>
+                        <p style="color: white; opacity: 0.8; font-size: 0.9rem;">Protein: ${protein}g | Carbs: ${carbs}g | Fat: ${fat}g</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        const authTabs = document.querySelectorAll('.auth-tab');
+        authTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                authTabs.forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.auth-content').forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.padding = '0.8rem 3rem';
+                nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                nav.style.padding = '1rem 3rem';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.program-card, .exercise-card, .calculator-card, .recovery-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
