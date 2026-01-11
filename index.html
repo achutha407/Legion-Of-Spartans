@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legion of Spartans 💪 - Forged in Discipline</title>
+    <link rel="icon" href="pictures/favicomx.png" type="image/x-icon">
+    <title>Legion of Spartans - Forged in Discipline</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         ::selection {
@@ -75,7 +76,14 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 1rem;
+        }
+
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px var(--accent-glow));
         }
 
         .logo {
@@ -84,14 +92,6 @@
             font-weight: 900;
             letter-spacing: 2px;
             color: var(--text-primary);
-            text-transform: uppercase;
-        }
-
-        .tagline {
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            font-weight: 600;
-            letter-spacing: 1px;
             text-transform: uppercase;
         }
 
@@ -442,6 +442,7 @@
             background: linear-gradient(135deg, var(--accent-primary) 0%, transparent 100%);
             opacity: 0;
             transition: opacity 0.4s;
+            pointer-events: none;
         }
 
         .program-card:hover::before {
@@ -452,6 +453,10 @@
             transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
             border-color: var(--accent-primary);
+        }
+
+        .program-card.expanded {
+            grid-column: 1 / -1;
         }
 
         .program-image {
@@ -517,6 +522,81 @@
             letter-spacing: 1px;
         }
 
+        .program-details {
+            display: none;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .program-details.active {
+            display: block;
+            animation: slideDown 0.4s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .detail-section h4 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--accent-primary);
+        }
+
+        .detail-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .detail-section li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .detail-section li::before {
+            content: '▸';
+            color: var(--accent-primary);
+            font-weight: 900;
+        }
+
+        .expand-btn {
+            margin-top: 1rem;
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .expand-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px var(--accent-glow);
+        }
         .body-selector {
             max-width: 1200px;
             margin: 0 auto;
@@ -758,91 +838,6 @@
             font-size: 3rem;
             font-weight: 900;
             color: white;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .pricing-card {
-            background: var(--bg-secondary);
-            border: 2px solid var(--border-color);
-            border-radius: 16px;
-            padding: 3rem 2rem;
-            text-align: center;
-            transition: all 0.4s;
-            position: relative;
-        }
-
-        .pricing-card.featured {
-            border-color: var(--accent-primary);
-            transform: scale(1.05);
-            box-shadow: 0 20px 60px rgba(196, 30, 58, 0.3);
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: var(--accent-primary);
-        }
-
-        .pricing-badge {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent-primary);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
-            font-weight: 800;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-        }
-
-        .pricing-card h3 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-        }
-
-        .price {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: var(--accent-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .price-period {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .features-list {
-            list-style: none;
-            margin-bottom: 2rem;
-            text-align: left;
-        }
-
-        .features-list li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .features-list li::before {
-            content: '✓';
-            color: var(--accent-primary);
-            font-weight: 900;
-            font-size: 1.2rem;
         }
 
         .account-section {
@@ -1089,12 +1084,12 @@
                 grid-template-columns: 1fr;
             }
 
-            .pricing-card.featured {
-                transform: none;
-            }
-
             section {
                 padding: 4rem 1.5rem;
+            }
+
+            .program-card.expanded {
+                grid-column: 1;
             }
         }
 
@@ -1111,12 +1106,22 @@
             .cta-button {
                 width: 100%;
             }
+
+            .logo-image {
+                width: 40px;
+                height: 40px;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
         }
     </style>
 </head>
 <body>
     <nav>
         <div class="logo-container">
+            <img src="pictures/favicomx.png" alt="Legion Logo" class="logo-image" onerror="this.style.display='none'">
             <div class="logo">Legion of Spartans</div>
         </div>
         <div class="hamburger" id="hamburger">
@@ -1163,101 +1168,7 @@
             <h2>Training Programs</h2>
             <p>Choose your path. Each program is designed to transform your body and mind through proven methods.</p>
         </div>
-        <div class="programs-grid">
-            <div class="program-card">
-                <img class="program-image" src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&q=80" alt="Weight Training">
-                <div class="program-content">
-                    <span class="program-tag">Strength</span>
-                    <h3>Weight Training</h3>
-                    <p>Build raw power and muscle mass with compound movements and progressive overload.</p>
-                    <div class="program-stats">
-                        <div class="stat">
-                            <div class="stat-value">5-6</div>
-                            <div class="stat-label">Days/Week</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">60-90</div>
-                            <div class="stat-label">Min/Session</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="program-card">
-                <img class="program-image" src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80" alt="Yoga">
-                <div class="program-content">
-                    <span class="program-tag">Flexibility</span>
-                    <h3>Warrior Yoga</h3>
-                    <p>Increase mobility, reduce injury risk, and develop mind-body awareness through focused practice.</p>
-                    <div class="program-stats">
-                        <div class="stat">
-                            <div class="stat-value">3-4</div>
-                            <div class="stat-label">Days/Week</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">45-60</div>
-                            <div class="stat-label">Min/Session</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="program-card">
-                <img class="program-image" src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80" alt="Fat Loss">
-                <div class="program-content">
-                    <span class="program-tag">Shred</span>
-                    <h3>Fat Loss Protocol</h3>
-                    <p>Strategic training and nutrition to preserve muscle while cutting fat efficiently.</p>
-                    <div class="program-stats">
-                        <div class="stat">
-                            <div class="stat-value">4-5</div>
-                            <div class="stat-label">Days/Week</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">50-70</div>
-                            <div class="stat-label">Min/Session</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="program-card">
-                <img class="program-image" src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&q=80" alt="Cardio">
-                <div class="program-content">
-                    <span class="program-tag">Endurance</span>
-                    <h3>Pure Cardio</h3>
-                    <p>Build cardiovascular endurance and mental toughness through varied intensity training.</p>
-                    <div class="program-stats">
-                        <div class="stat">
-                            <div class="stat-value">5-6</div>
-                            <div class="stat-label">Days/Week</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">30-60</div>
-                            <div class="stat-label">Min/Session</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="program-card">
-                <img class="program-image" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&q=80" alt="Calisthenics">
-                <div class="program-content">
-                    <span class="program-tag">Bodyweight</span>
-                    <h3>Calisthenics Mastery</h3>
-                    <p>Master your bodyweight with progressive skills training from basics to advanced moves.</p>
-                    <div class="program-stats">
-                        <div class="stat">
-                            <div class="stat-value">4-5</div>
-                            <div class="stat-label">Days/Week</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">45-75</div>
-                            <div class="stat-label">Min/Session</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="programs-grid" id="programsGrid">
         </div>
     </section>
 
@@ -1279,47 +1190,6 @@
                 </div>
             </div>
             <div class="exercise-grid" id="exerciseGrid">
-                <div class="exercise-card">
-                    <img class="exercise-thumbnail" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Bench Press">
-                    <div class="exercise-info">
-                        <h4>Barbell Bench Press</h4>
-                        <div class="exercise-meta">
-                            <span class="meta-tag">Compound</span>
-                            <span class="meta-tag">Barbell</span>
-                            <span class="meta-tag">Beginner-Advanced</span>
-                        </div>
-                        <p>The king of chest exercises. Retract scapula, maintain arch, press in straight line. Control the eccentric, explosive concentric.</p>
-                        <a href="https://www.youtube.com/watch?v=rT7DgCr-3pg" target="_blank" rel="noopener" class="video-btn" style="text-decoration: none;">▶ Watch Form Video</a>
-                    </div>
-                </div>
-
-                <div class="exercise-card">
-                    <img class="exercise-thumbnail" src="https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?w=600&q=80" alt="Incline Press">
-                    <div class="exercise-info">
-                        <h4>Incline Dumbbell Press</h4>
-                        <div class="exercise-meta">
-                            <span class="meta-tag">Compound</span>
-                            <span class="meta-tag">Dumbbells</span>
-                            <span class="meta-tag">Intermediate</span>
-                        </div>
-                        <p>Target upper chest with 30-45 degree angle. Full ROM, controlled tempo, squeeze at top. Avoid overarching back.</p>
-                        <a href="https://www.youtube.com/watch?v=8iPEnn-ltC8" target="_blank" rel="noopener" class="video-btn" style="text-decoration: none;">▶ Watch Form Video</a>
-                    </div>
-                </div>
-
-                <div class="exercise-card">
-                    <img class="exercise-thumbnail" src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80" alt="Cable Flyes">
-                    <div class="exercise-info">
-                        <h4>Cable Flyes</h4>
-                        <div class="exercise-meta">
-                            <span class="meta-tag">Isolation</span>
-                            <span class="meta-tag">Cable</span>
-                            <span class="meta-tag">All Levels</span>
-                        </div>
-                        <p>Constant tension throughout movement. Slight bend in elbows, focus on chest squeeze. Various angles target different areas.</p>
-                        <a href="https://www.youtube.com/watch?v=Iwe6AmxVf7o" target="_blank" rel="noopener" class="video-btn" style="text-decoration: none;">▶ Watch Form Video</a>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1534,6 +1404,504 @@
     </footer>
 
     <script>
+        // Training Programs Data with Detailed Information
+        const programs = [
+            {
+                name: 'Weight Training',
+                tag: 'Strength',
+                image: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&q=80',
+                description: 'Build raw power and muscle mass with compound movements and progressive overload.',
+                daysPerWeek: '5-6',
+                minutesPerSession: '60-90',
+                details: {
+                    overview: 'This program focuses on compound lifts and progressive overload to build maximum strength and muscle mass. You will train major muscle groups with heavy weights and structured progression.',
+                    benefits: [
+                        'Increased muscle mass and strength',
+                        'Improved bone density',
+                        'Enhanced metabolic rate',
+                        'Better functional strength for daily activities',
+                        'Increased confidence and mental toughness'
+                    ],
+                    weeklySchedule: [
+                        'Monday: Chest & Triceps',
+                        'Tuesday: Back & Biceps',
+                        'Wednesday: Legs (Quad Focus)',
+                        'Thursday: Shoulders & Abs',
+                        'Friday: Legs (Hamstring/Glute Focus)',
+                        'Saturday: Arms & Accessories',
+                        'Sunday: Rest or Active Recovery'
+                    ],
+                    progression: [
+                        'Start with 3 sets of 8-12 reps',
+                        'Progress weight by 2.5-5lbs when hitting upper rep range',
+                        'Deload every 4-6 weeks at 60-70% working weight',
+                        'Track all lifts in a training log',
+                        'Focus on form before adding weight'
+                    ]
+                }
+            },
+            {
+                name: 'Warrior Yoga',
+                tag: 'Flexibility',
+                image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80',
+                description: 'Increase mobility, reduce injury risk, and develop mind-body awareness through focused practice.',
+                daysPerWeek: '3-4',
+                minutesPerSession: '45-60',
+                details: {
+                    overview: 'A strength-focused yoga practice designed for athletes. Build mobility, stability, and mental clarity while reducing injury risk and improving recovery.',
+                    benefits: [
+                        'Increased flexibility and range of motion',
+                        'Reduced muscle tension and soreness',
+                        'Better balance and proprioception',
+                        'Improved breathing and oxygen efficiency',
+                        'Enhanced mental focus and stress management',
+                        'Injury prevention through mobility work'
+                    ],
+                    weeklySchedule: [
+                        'Monday: Power Yoga Flow (45min)',
+                        'Wednesday: Deep Stretch & Mobility (60min)',
+                        'Friday: Warrior Vinyasa (50min)',
+                        'Sunday: Restorative Yoga (45min)'
+                    ],
+                    progression: [
+                        'Week 1-2: Learn foundational poses',
+                        'Week 3-4: Build flow sequences',
+                        'Week 5-8: Introduce advanced poses',
+                        'Week 9+: Personal flow development',
+                        'Focus on breath control throughout'
+                    ]
+                }
+            },
+            {
+                name: 'Fat Loss Protocol',
+                tag: 'Shred',
+                image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80',
+                description: 'Strategic training and nutrition to preserve muscle while cutting fat efficiently.',
+                daysPerWeek: '4-5',
+                minutesPerSession: '50-70',
+                details: {
+                    overview: 'A science-based fat loss program combining resistance training with strategic cardio and nutrition. Maximize fat loss while preserving lean muscle mass.',
+                    benefits: [
+                        'Accelerated fat loss while maintaining muscle',
+                        'Improved cardiovascular health',
+                        'Better insulin sensitivity',
+                        'Enhanced energy levels',
+                        'Visible physique transformation',
+                        'Sustainable lifestyle changes'
+                    ],
+                    weeklySchedule: [
+                        'Monday: Upper Body Strength + 15min HIIT',
+                        'Tuesday: Lower Body Strength + Core',
+                        'Wednesday: Steady State Cardio (30-40min)',
+                        'Thursday: Full Body Circuit Training',
+                        'Friday: Upper/Lower Split + 20min LISS',
+                        'Weekend: Active recovery or rest'
+                    ],
+                    progression: [
+                        'Start with 300-500 calorie deficit',
+                        'Maintain high protein (1g per lb bodyweight)',
+                        'Track progress with photos and measurements',
+                        'Refeed 1x per week at maintenance calories',
+                        'Adjust cardio based on weekly progress'
+                    ]
+                }
+            },
+            {
+                name: 'Pure Cardio',
+                tag: 'Endurance',
+                image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&q=80',
+                description: 'Build cardiovascular endurance and mental toughness through varied intensity training.',
+                daysPerWeek: '5-6',
+                minutesPerSession: '30-60',
+                details: {
+                    overview: 'Develop elite cardiovascular fitness through a mix of HIIT, steady state, and interval training. Build a powerful aerobic engine and mental fortitude.',
+                    benefits: [
+                        'Dramatically improved cardiovascular health',
+                        'Increased VO2 max and endurance',
+                        'Better recovery between sets',
+                        'Enhanced fat burning capacity',
+                        'Mental toughness and discipline',
+                        'Reduced resting heart rate'
+                    ],
+                    weeklySchedule: [
+                        'Monday: HIIT Sprint Intervals (30min)',
+                        'Tuesday: Steady State Run (40-50min)',
+                        'Wednesday: Bike Intervals (35min)',
+                        'Thursday: Tempo Run (30-40min)',
+                        'Friday: Swimming or Rowing (45min)',
+                        'Saturday: Long Slow Distance (60min)',
+                        'Sunday: Active recovery walk'
+                    ],
+                    progression: [
+                        'Build aerobic base first (4-6 weeks)',
+                        'Gradually introduce interval work',
+                        'Increase volume by 10% weekly',
+                        'Monitor heart rate zones',
+                        'Include recovery weeks every 4th week'
+                    ]
+                }
+            },
+            {
+                name: 'Calisthenics Mastery',
+                tag: 'Bodyweight',
+                image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&q=80',
+                description: 'Master your bodyweight with progressive skills training from basics to advanced moves.',
+                daysPerWeek: '4-5',
+                minutesPerSession: '45-75',
+                details: {
+                    overview: 'Progress from foundational bodyweight movements to advanced calisthenics skills. Build relative strength, body control, and impressive skills like muscle-ups, front levers, and handstands.',
+                    benefits: [
+                        'Elite relative strength development',
+                        'Full body coordination and control',
+                        'No equipment needed - train anywhere',
+                        'Impressive skill acquisition',
+                        'Joint health and stability',
+                        'Functional strength for real-world movement'
+                    ],
+                    weeklySchedule: [
+                        'Monday: Push Skills (Planche, HSPU progression)',
+                        'Tuesday: Pull Skills (Front Lever, Pull-up variations)',
+                        'Wednesday: Leg & Core Power',
+                        'Thursday: Straight Arm Strength (Levers, Planches)',
+                        'Friday: Dynamic Skills (Muscle-ups, Bar work)',
+                        'Weekend: Skill practice or rest'
+                    ],
+                    progression: [
+                        'Master fundamentals: 20 pull-ups, 30 dips, 50 push-ups',
+                        'Progress to harder variations (archer, one-arm)',
+                        'Introduce static holds (L-sit, Handstand)',
+                        'Work on skill progressions weekly',
+                        'Film yourself for form analysis'
+                    ]
+                }
+            }
+        ];
+
+        // Extensive Exercise Database
+        const exercises = {
+            chest: [
+                { 
+                    name: 'Barbell Bench Press', 
+                    img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80', 
+                    tags: ['Compound', 'Barbell', 'Beginner-Advanced'], 
+                    desc: 'The king of chest exercises. Retract scapula, maintain arch, press in straight line. Control the eccentric, explosive concentric.', 
+                    video: 'https://www.youtube.com/watch?v=rT7DgCr-3pg' 
+                },
+                { 
+                    name: 'Incline Dumbbell Press', 
+                    img: 'https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?w=600&q=80', 
+                    tags: ['Compound', 'Dumbbells', 'Intermediate'], 
+                    desc: 'Target upper chest with 30-45 degree angle. Full ROM, controlled tempo, squeeze at top. Avoid overarching back.', 
+                    video: 'https://www.youtube.com/watch?v=8iPEnn-ltC8' 
+                },
+                { 
+                    name: 'Cable Flyes', 
+                    img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', 
+                    tags: ['Isolation', 'Cable', 'All Levels'], 
+                    desc: 'Constant tension throughout movement. Slight bend in elbows, focus on chest squeeze. Various angles target different areas.', 
+                    video: 'https://www.youtube.com/watch?v=Iwe6AmxVf7o' 
+                },
+                { 
+                    name: 'Dumbbell Flyes', 
+                    img: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80', 
+                    tags: ['Isolation', 'Dumbbells', 'Intermediate'], 
+                    desc: 'Stretch the pecs with controlled arc motion. Keep slight elbow bend, lower until stretch, squeeze at top.', 
+                    video: 'https://www.youtube.com/watch?v=eozdVDA78K0' 
+                },
+                { 
+                    name: 'Decline Bench Press', 
+                    img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80', 
+                    tags: ['Compound', 'Barbell', 'Intermediate'], 
+                    desc: 'Target lower pecs with decline angle. Maintain tight setup, press to lockout, control descent.', 
+                    video: 'https://www.youtube.com/watch?v=LfyQBUKR8SE' 
+                },
+                { 
+                    name: 'Push-Ups', 
+                    img: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600&q=80', 
+                    tags: ['Compound', 'Bodyweight', 'All Levels'], 
+                    desc: 'Classic chest builder. Hands slightly wider than shoulders, full range, maintain plank position throughout.', 
+                    video: 'https://www.youtube.com/watch?v=IODxDxX7oi4' 
+                }
+            ],
+            back: [
+                { 
+                    name: 'Deadlifts', 
+                    img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80', 
+                    tags: ['Compound', 'Barbell', 'Advanced'], 
+                    desc: 'King of all exercises. Neutral spine, hip hinge, drive through heels. Build total body strength.', 
+                    video: 'https://www.youtube.com/watch?v=op9kVnSso6Q' 
+                },
+                { 
+                    name: 'Pull-Ups', 
+                    img: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600&q=80', 
+                    tags: ['Compound', 'Bodyweight', 'Intermediate'], 
+                    desc: 'Full range scapular movement. Dead hang to chin over bar. Control eccentric phase.', 
+                    video: 'https://www.youtube.com/watch?v=eGo4IYlbE5g' 
+                },
+                { 
+                    name: 'Barbell Rows', 
+                    img: 'https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?w=600&q=80', 
+                    tags: ['Compound', 'Barbell', 'Intermediate'], 
+                    desc: 'Hinge at hips, row to lower chest. Maintain neutral spine, squeeze shoulder blades together.', 
+                    video: 'https://www.youtube.com/watch?v=FWJR5Ve8bnQ' 
+                },
+                { 
+                    name: 'Lat Pulldowns', 
+                    img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', 
+                    tags: ['Compound', 'Cable', 'All Levels'], 
+                    desc: 'Build wide lats. Pull to upper chest, squeeze shoulder blades, control the return.', 
+                    video: 'https://www.youtube.com/watch?v=CAwf7n6Luuc' 
+                },
+                { 
+                    name: 'T-Bar Rows', 
+                    img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80', 
+                    tags: ['Compound', 'Machine/Barbell', 'Intermediate'], 
+                    desc: 'Thick back builder. Brace core, pull to sternum, feel mid-back contraction.', 
+                    video: 'https://www.youtube.com/watch?v=j3Igk5nyZE4' 
+                },
+                { 
+                    name: 'Seated Cable Rows', 
+                    img: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80', 
+                    tags: ['Compound', 'Cable', 'All Levels'], 
+                    desc: 'Pull to lower chest, squeeze scapula together. Keep torso stable, control the weight.', 
+                    video: 'https://www.youtube.com/watch?v=GZbfZ033f74' 
+                },
+                { 
+                    name: 'Single-Arm Dumbbell Rows', 
+                    img: 'https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?w=600&q=80', 
+                    tags: ['Compound', 'Dumbbells', 'Intermediate'], 
+                    desc: 'Unilateral back work. Support on bench, pull dumbbell to hip, squeeze at top.', 
+                    video: 'https://www.youtube.com/watch?v=pYcpY20QaE8' 
+                },
+                { 
+                    name: 'Face Pulls', 
+                    img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', 
+                    tags: ['Isolation', 'Cable', 'All Levels'], 
+                    desc: 'Essential for rear delts and upper back health. Pull to face, external rotation at end.', 
+                    video: 'https://www.youtube.com/watch?v=rep-qVOkqgk' 
+                }
+            ],
+            shoulders: [
+                { 
+                    name: 'Overhead Press', 
+                    img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80', 
+                    tags: ['Compound', 'Barbell', 'Intermediate'], 
+                    desc: 'Press straight overhead, lock out arms. Engage core, avoid excessive back arch.', 
+                    video: 'https://www.youtube.com/watch?v=2yjwXTZQDDI' 
+                },
+                { 
+                    name: 'Lateral Raises', 
+                    img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', 
+                    tags: ['Isolation', 'Dumbbells', 'All Levels'], 
+                    desc: 'Build shoulder width. Slight forward lean, controlled movement, mind-muscle connection.', 
+                    video: 'https://www.youtube.com/watch?v=3VcKaXpzqRo' 
+                },
+                { 
+                    name: 'Face Pulls', 
+                    img: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80', 
+                    tags: ['Isolation', 'Cable', 'All Levels'], 
+                    desc: 'Essential for rear delts and rotator cuff health. Pull to face level, external rotation at end.', 
+                    video: 'https://www.youtube.com/watch?v=rep-qVOkqgk' 
+                },
+                { 
+                    name: 'Arnold Press', 
+                    img: 'https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?w=600&q=80', 
+                    tags: ['Compound', 'Dumbbells', 'Advanced'], 
+                    desc: 'Complete shoulder development. Rotate palms as you press, control the descent.', 
+                    video: 'https://www.youtube.com/watch?v=6Z15_WdXmVw' 
+                },
+                { 
+                    name: 'Front Raises', 
+                    img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80', 
+                    tags: ['Isolation', 'Dumbbells', 'All Levels'], 
+                    desc: 'Anterior delt isolation. Raise to shoulder height, control the descent, avoid momentum.', 
+                    video: 'https://www.youtube.com/watch?v=3VcKaXpzqRo' 
+                },
+                { 
+                    name: 'Upright Rows', 
+                    img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80', 
+                    tags: ['Compound', 'Barbell/Cable', 'Intermediate'], 
+                    desc: 'Pull to upper chest, elbows high. Build traps and shoulders. Stop if shoulder pain occurs.', 
+                    video: 'https://www.youtube.com/watch?v=gikz5UZB_HQ' 
+                },
+                { 
+                    name: 'Reverse Flyes', 
+                    img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', 
+                    tags: ['Isolation', 'Dumbbells/Cable', 'All Levels'], 
+                    desc: 'Target rear delts. Slight bend in elbows, squeeze shoulder blades together at top.', 
+                    video: 'https://www.youtube.com/watch?v=T7vMGxOvREQ' 
+                }
+            ],
+            arms: [
+                { 
+                    name: 'Barbell Curls', 
+                    img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80', 
+                    tags: ['Isolation', 'Barbell', 'All Levels'], 
+                    desc: 'Classic bicep builder. No body swing, controlled eccentric, full range of motion.', 
+                    video: 'https://www.youtube.com/watch?v=kwG2ipFRgfo' 
+                },
+                { 
+                    name: 'Close-Grip Bench Press', 
+                    img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80', 
+                    tags: ['Compound', 'Barbell', 'Intermediate'], 
+                    desc: 'Best tricep mass builder. Hands shoulder-width, elbows tucked, press explosively.', 
+                    video: 'https://www.youtube.com/watch?v=nEF0bv2FW94' 
+                },
+                { 
+                    name: 'Hammer Curls', 
+                    img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', 
+                    tags: ['Isolation', 'Dumbbells', 'All Levels'], 
+                    desc: 'Target brachialis and forearms. Neutral grip throughout, no rotation.', 
+                    video: 'https://www.youtube.com/watch?v=TwD-YGVP4Bk' 
+                },
+                { 
+                    name: 'Tricep Dips', 
+                    img: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600&q=80', 
+                    tags: ['Compound', 'Bodyweight', 'Intermediate'], 
+                    desc: 'Mass builder for triceps. Lean forward slightly, lower until upper arms parallel to ground.', 
+                    video: 'https://www.youtube.com/watch?v=2z8JmcrW-As' 
+                },
+                { 
+                    name: 'Cable Tricep Pushdowns', 
+                    img: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80', 
+                    tags: ['Isolation', 'Cable', 'All Levels'], 
+                    desc: 'Isolation for triceps. Keep elbows stationary, full extension, squeeze at bottom.', 
+                    video: 'https://www.youtube.com/watch?v=2-LAMcpzODU' 
+                },
+                { 
+                    name: 'Preacher Curls', 
+                    img: 'https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?w=600&q=80', 
+                    tags: ['Isolation', 'Barbell/Dumbbells', 'Intermediate'], 
+                    desc: 'Strict bicep isolation. No cheating, full stretch at bottom, peak contraction at top.', 
+                    video: 'https://www.youtube.com/watch?v=fIWP-FRFNU0' 
+                },
+                { 
+                    name: 'Overhead Tricep Extension', 
+                    img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80', 
+                    tags: ['Isolation', 'Dumbbells/Cable', 'All Levels'], 
+                    desc: 'Stretch the long head of triceps. Keep elbows in, lower behind head, extend fully.', 
+                    video: 'https://www.youtube.com/watch?v=YbX7Wd8jQ-Q' 
+                },
+                { 
+                    name: 'Concentration Curls', 
+                    img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', 
+                    tags: ['Isolation', 'Dumbbells', 'All Levels'], 
+                    desc: 'Peak bicep contraction. Brace elbow on inner thigh, curl with supination, squeeze.', 
+                    video: 'https://www.youtube.com/watch?v=Jvj2wV0vOdI' 
+                }
+            ],
+            legs: [
+                { 
+                    name: 'Back Squats', 
+                    img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80', 
+                    tags: ['Compound', 'Barbell', 'Intermediate'], 
+                    desc: 'King of leg exercises. Hip crease below knee, drive through heels, maintain upright torso.', 
+                    video: 'https://www.youtube.com/watch?v=ultWZbUMPL8' 
+                },
+                { 
+                    name: 'Romanian Deadlifts', 
+                    img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80', 
+                    tags: ['Compound', 'Barbell', 'Intermediate'], 
+                    desc: 'Hamstring and glute development. Slight knee bend, hip hinge, feel the stretch.', 
+                    video: 'https://www.youtube.com/watch?v=2SHsk9AzdjA' 
+                },
+                { 
+                    name: 'Bulgarian Split Squats', 
+                    img: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80', 
+                    tags: ['Compound', 'Dumbbells', 'Advanced'], 
+                    desc: 'Unilateral leg strength. Front foot flat, vertical torso, control the descent.', 
+                    video: 'https://www.youtube.com/watch?v=2C-uNgKwPLE' 
+                },
+                { 
+                    name: 'Leg Press', 
+                    img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', 
+                    tags: ['Compound', 'Machine', 'All Levels'], 
+                    desc: 'Heavy quad work. Full range of motion, feet shoulder-width, drive through heels.', 
+                    video: 'https://www.youtube.com/watch?v=IZxyjW7MPJQ' 
+                },
+                { 
+                    name: 'Leg Curls', 
+                    img: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80', 
+                    tags: ['Isolation', 'Machine', 'All Levels'], 
+                    desc: 'Hamstring isolation. Full stretch, curl to glutes, squeeze at top, slow eccentric.', 
+                    video: 'https://www.youtube.com/watch?v=ELOCsoDSmrg' 
+                },
+                { 
+                    name: 'Walking Lunges', 
+                    img: 'https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?w=600&q=80', 
+                    tags: ['Compound', 'Dumbbells/Bodyweight', 'All Levels'], 
+                    desc: 'Functional leg strength. Step forward, drop back knee, maintain upright torso.', 
+                    video: 'https://www.youtube.com/watch?v=L8fvypPrzzs' 
+                },
+                { 
+                    name: 'Leg Extensions', 
+                    img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', 
+                    tags: ['Isolation', 'Machine', 'All Levels'], 
+                    desc: 'Quad isolation. Control the movement, squeeze at top, slow negative.', 
+                    video: 'https://www.youtube.com/watch?v=YyvSfVjQeL0' 
+                },
+                { 
+                    name: 'Calf Raises', 
+                    img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80', 
+                    tags: ['Isolation', 'Machine/Bodyweight', 'All Levels'], 
+                    desc: 'Build powerful calves. Full stretch at bottom, rise onto toes, pause at top.', 
+                    video: 'https://www.youtube.com/watch?v=gwLzBJYoWlI' 
+                }
+            ],
+            core: [
+                { 
+                    name: 'Hanging Leg Raises', 
+                    img: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600&q=80', 
+                    tags: ['Isolation', 'Bodyweight', 'Intermediate'], 
+                    desc: 'Superior ab exercise. Minimize swing, raise legs to 90 degrees, controlled lowering.', 
+                    video: 'https://www.youtube.com/watch?v=hdng3Nm1x_E' 
+                },
+                { 
+                    name: 'Ab Wheel Rollouts', 
+                    img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80', 
+                    tags: ['Compound', 'Equipment', 'Advanced'], 
+                    desc: 'Total core strength. Maintain neutral spine, extend as far as possible, pull back with core.', 
+                    video: 'https://www.youtube.com/watch?v=EXm-0PXSD3E' 
+                },
+                { 
+                    name: 'Plank Variations', 
+                    img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', 
+                    tags: ['Isometric', 'Bodyweight', 'All Levels'], 
+                    desc: 'Build anti-extension strength. Neutral spine, squeeze glutes, breathe normally.', 
+                    video: 'https://www.youtube.com/watch?v=pSHjTRCQxIw' 
+                },
+                { 
+                    name: 'Cable Crunches', 
+                    img: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80', 
+                    tags: ['Isolation', 'Cable', 'All Levels'], 
+                    desc: 'Weighted ab work. Kneel, crunch down, maintain constant tension, slow return.', 
+                    video: 'https://www.youtube.com/watch?v=Xyd_fa5zoEU' 
+                },
+                { 
+                    name: 'Russian Twists', 
+                    img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', 
+                    tags: ['Isolation', 'Bodyweight/Weighted', 'Intermediate'], 
+                    desc: 'Oblique development. Sit with feet elevated, rotate side to side, control the movement.', 
+                    video: 'https://www.youtube.com/watch?v=wkD8rjkodUI' 
+                },
+                { 
+                    name: 'Dead Bugs', 
+                    img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80', 
+                    tags: ['Compound', 'Bodyweight', 'All Levels'], 
+                    desc: 'Core stability drill. Maintain lower back contact with floor, opposite arm/leg movement.', 
+                    video: 'https://www.youtube.com/watch?v=g_BYB0R-4Ws' 
+                },
+                { 
+                    name: 'Pallof Press', 
+                    img: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80', 
+                    tags: ['Compound', 'Cable', 'Intermediate'], 
+                    desc: 'Anti-rotation core strength. Press out, resist cable rotation, return with control.', 
+                    video: 'https://www.youtube.com/watch?v=AH_QZLm_0-s' 
+                }
+            ]
+        };
+
+        // Quote rotation
         const quotes = [
             "Discipline beats motivation. Every single time.",
             "Your body achieves what your mind believes.",
@@ -1558,6 +1926,7 @@
         rotateQuote();
         setInterval(rotateQuote, 5000);
 
+        // Theme toggle
         const themeToggle = document.getElementById('themeToggle');
         const savedTheme = localStorage.getItem('theme') || 'dark';
         
@@ -1572,6 +1941,7 @@
             localStorage.setItem('theme', newTheme);
         });
 
+        // Mobile menu
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
 
@@ -1587,39 +1957,83 @@
             });
         });
 
-        const exercises = {
-            chest: [
-                { name: 'Barbell Bench Press', img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80', tags: ['Compound', 'Barbell', 'Beginner-Advanced'], desc: 'The king of chest exercises. Retract scapula, maintain arch, press in straight line.', video: 'https://www.youtube.com/watch?v=rT7DgCr-3pg' },
-                { name: 'Incline Dumbbell Press', img: 'https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?w=600&q=80', tags: ['Compound', 'Dumbbells', 'Intermediate'], desc: 'Target upper chest with 30-45 degree angle. Full ROM, controlled tempo, squeeze at top.', video: 'https://www.youtube.com/watch?v=8iPEnn-ltC8' },
-                { name: 'Cable Flyes', img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', tags: ['Isolation', 'Cable', 'All Levels'], desc: 'Constant tension throughout movement. Slight bend in elbows, focus on chest squeeze.', video: 'https://www.youtube.com/watch?v=Iwe6AmxVf7o' }
-            ],
-            back: [
-                { name: 'Deadlifts', img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80', tags: ['Compound', 'Barbell', 'Advanced'], desc: 'King of all exercises. Neutral spine, hip hinge, drive through heels. Build total body strength.', video: 'https://www.youtube.com/watch?v=op9kVnSso6Q' },
-                { name: 'Pull-Ups', img: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600&q=80', tags: ['Compound', 'Bodyweight', 'Intermediate'], desc: 'Full range scapular movement. Dead hang to chin over bar. Control eccentric phase.', video: 'https://www.youtube.com/watch?v=eGo4IYlbE5g' },
-                { name: 'Barbell Rows', img: 'https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?w=600&q=80', tags: ['Compound', 'Barbell', 'Intermediate'], desc: 'Hinge at hips, row to lower chest. Maintain neutral spine, squeeze shoulder blades together.', video: 'https://www.youtube.com/watch?v=FWJR5Ve8bnQ' }
-            ],
-            shoulders: [
-                { name: 'Overhead Press', img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80', tags: ['Compound', 'Barbell', 'Intermediate'], desc: 'Press straight overhead, lock out arms. Engage core, avoid excessive back arch.', video: 'https://www.youtube.com/watch?v=2yjwXTZQDDI' },
-                { name: 'Lateral Raises', img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', tags: ['Isolation', 'Dumbbells', 'All Levels'], desc: 'Build shoulder width. Slight forward lean, controlled movement, mind-muscle connection.', video: 'https://www.youtube.com/watch?v=3VcKaXpzqRo' },
-                { name: 'Face Pulls', img: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80', tags: ['Isolation', 'Cable', 'All Levels'], desc: 'Essential for rear delts and rotator cuff health. Pull to face level, external rotation at end.', video: 'https://www.youtube.com/watch?v=rep-qVOkqgk' }
-            ],
-            arms: [
-                { name: 'Barbell Curls', img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80', tags: ['Isolation', 'Barbell', 'All Levels'], desc: 'Classic bicep builder. No body swing, controlled eccentric, full range of motion.', video: 'https://www.youtube.com/watch?v=kwG2ipFRgfo' },
-                { name: 'Close-Grip Bench', img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80', tags: ['Compound', 'Barbell', 'Intermediate'], desc: 'Best tricep mass builder. Hands shoulder-width, elbows tucked, press explosively.', video: 'https://www.youtube.com/watch?v=nEF0bv2FW94' },
-                { name: 'Hammer Curls', img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', tags: ['Isolation', 'Dumbbells', 'All Levels'], desc: 'Target brachialis and forearms. Neutral grip throughout, no rotation.', video: 'https://www.youtube.com/watch?v=TwD-YGVP4Bk' }
-            ],
-            legs: [
-                { name: 'Back Squats', img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80', tags: ['Compound', 'Barbell', 'Intermediate'], desc: 'King of leg exercises. Depth matters. Hip crease below knee, drive through heels.', video: 'https://www.youtube.com/watch?v=ultWZbUMPL8' },
-                { name: 'Romanian Deadlifts', img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80', tags: ['Compound', 'Barbell', 'Intermediate'], desc: 'Hamstring and glute development. Slight knee bend, hip hinge, feel the stretch.', video: 'https://www.youtube.com/watch?v=2SHsk9AzdjA' },
-                { name: 'Bulgarian Split Squats', img: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80', tags: ['Compound', 'Dumbbells', 'Advanced'], desc: 'Unilateral leg strength. Front foot flat, vertical torso, control the descent.', video: 'https://www.youtube.com/watch?v=2C-uNgKwPLE' }
-            ],
-            core: [
-                { name: 'Hanging Leg Raises', img: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600&q=80', tags: ['Isolation', 'Bodyweight', 'Intermediate'], desc: 'Superior ab exercise. Minimize swing, raise legs to 90 degrees, controlled lowering.', video: 'https://www.youtube.com/watch?v=hdng3Nm1x_E' },
-                { name: 'Ab Wheel Rollouts', img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80', tags: ['Compound', 'Equipment', 'Advanced'], desc: 'Total core strength. Maintain neutral spine, extend as far as possible, pull back with core.', video: 'https://www.youtube.com/watch?v=EXm-0PXSD3E' },
-                { name: 'Plank Variations', img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80', tags: ['Isometric', 'Bodyweight', 'All Levels'], desc: 'Build anti-extension strength. Neutral spine, squeeze glutes, breathe normally.', video: 'https://www.youtube.com/watch?v=pSHjTRCQxIw' }
-            ]
-        };
+        // Render Programs
+        function renderPrograms() {
+            const grid = document.getElementById('programsGrid');
+            grid.innerHTML = programs.map((program, index) => `
+                <div class="program-card" data-program-index="${index}">
+                    <img class="program-image" src="${program.image}" alt="${program.name}">
+                    <div class="program-content">
+                        <span class="program-tag">${program.tag}</span>
+                        <h3>${program.name}</h3>
+                        <p>${program.description}</p>
+                        <div class="program-stats">
+                            <div class="stat">
+                                <div class="stat-value">${program.daysPerWeek}</div>
+                                <div class="stat-label">Days/Week</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">${program.minutesPerSession}</div>
+                                <div class="stat-label">Min/Session</div>
+                            </div>
+                        </div>
+                        <button class="expand-btn" onclick="toggleProgram(${index})">View Details →</button>
+                        
+                        <div class="program-details" id="program-details-${index}">
+                            <h4 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent-primary);">Program Overview</h4>
+                            <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem;">${program.details.overview}</p>
+                            
+                            <div class="details-grid">
+                                <div class="detail-section">
+                                    <h4>Key Benefits</h4>
+                                    <ul>
+                                        ${program.details.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                
+                                <div class="detail-section">
+                                    <h4>Weekly Schedule</h4>
+                                    <ul>
+                                        ${program.details.weeklySchedule.map(day => `<li>${day}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                
+                                <div class="detail-section">
+                                    <h4>Progression Strategy</h4>
+                                    <ul>
+                                        ${program.details.progression.map(step => `<li>${step}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
 
+        function toggleProgram(index) {
+            const details = document.getElementById(`program-details-${index}`);
+            const card = document.querySelector(`[data-program-index="${index}"]`);
+            const btn = card.querySelector('.expand-btn');
+            
+            if (details.classList.contains('active')) {
+                details.classList.remove('active');
+                card.classList.remove('expanded');
+                btn.textContent = 'View Details →';
+            } else {
+                // Close all other programs
+                document.querySelectorAll('.program-details').forEach(d => d.classList.remove('active'));
+                document.querySelectorAll('.program-card').forEach(c => c.classList.remove('expanded'));
+                document.querySelectorAll('.expand-btn').forEach(b => b.textContent = 'View Details →');
+                
+                // Open this one
+                details.classList.add('active');
+                card.classList.add('expanded');
+                btn.textContent = 'Hide Details ←';
+            }
+        }
+
+        // Render exercises
         const bodyPartBtns = document.querySelectorAll('.body-part-btn');
         const exerciseGrid = document.getElementById('exerciseGrid');
 
@@ -1650,6 +2064,11 @@
             `).join('');
         }
 
+        // Initialize
+        renderPrograms();
+        renderExercises('chest');
+
+        // Calculator functions
         function calculateBMI() {
             const weight = parseFloat(document.getElementById('bmiWeight').value);
             const height = parseFloat(document.getElementById('bmiHeight').value) / 100;
@@ -1740,6 +2159,7 @@
             `;
         }
 
+        // Auth tabs
         const authTabs = document.querySelectorAll('.auth-tab');
         authTabs.forEach(tab => {
             tab.addEventListener('click', () => {
@@ -1750,6 +2170,7 @@
             });
         });
 
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1760,6 +2181,7 @@
             });
         });
 
+        // Scroll effects for nav
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
             if (window.scrollY > 100) {
@@ -1771,6 +2193,7 @@
             }
         });
 
+        // Intersection observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
